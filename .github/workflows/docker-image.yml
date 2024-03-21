@@ -25,6 +25,7 @@ jobs:
         minor_pattern: "feat:"
         # A string to determine the format of the version output
         format: "${major}.${minor}.${patch}-prerelease${increment}"
+      id: version
             
         
     - name: Docker login
