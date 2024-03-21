@@ -17,6 +17,7 @@ jobs:
       uses: actions/checkout@v3
       with: 
         fetch-depth: 0
+        
     - name: Docker login
       env: 
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -25,3 +26,12 @@ jobs:
         echo "Inicial login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "Fin del login"
+    
+    - name: Build Docker Image
+      run: |
+        docker run -t 2126468/docker-graphql:0.0.2 .
+
+    - name: Push Docker Image
+      run: |
+        docker push 2126468/docker-graphql:0.0.2 .
+        
